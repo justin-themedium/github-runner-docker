@@ -17,6 +17,8 @@ RUN mkdir /home/docker
 # RUN apt-get install -y curl jq build-essential libssl-dev libffi-dev python3 python3-venv python3-dev \
 #    --no-install-suggests --no-install-recommends
 RUN apt-get install -y --no-install-suggests --no-install-recommends \
+build-essential \
+git \
 curl \
 ca-certificates \
 jq
