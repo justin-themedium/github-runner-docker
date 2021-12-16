@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 ENV DEBIAN_FRONTEND noninteractive
 
 # set the github runner version
-ARG RUNNER_VERSION="2.280.3"
+ARG RUNNER_VERSION="2.285.1"
 
 # update the base packages
 # RUN apt-get update -y && apt-get upgrade -y 
