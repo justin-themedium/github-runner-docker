@@ -17,13 +17,21 @@ RUN mkdir /home/docker
 # RUN apt-get install -y curl jq build-essential libssl-dev libffi-dev python3 python3-venv python3-dev \
 #    --no-install-suggests --no-install-recommends
 RUN apt-get install -y --no-install-suggests --no-install-recommends \
-build-essential \
-git \
-curl \
-ca-certificates \
-jq
+    build-essential \
+    git \
+    curl \
+    ca-certificates \
+    jq \
+    gnupg \
+    lsb-release
 
-RUN curl -sSL https://get.docker.com/ | sh
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+RUN echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+RUN apt-get update -y
+RUN apt-get install -y docker-ce docker-ce-cli containerd.io
 
 RUN curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 RUN chmod +x /usr/local/bin/docker-compose
