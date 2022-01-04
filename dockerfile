@@ -1,12 +1,12 @@
 # base
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 ENV DEBIAN_FRONTEND noninteractive
 
 # set the github runner version
-ARG RUNNER_VERSION="2.285.1"
+ARG RUNNER_VERSION="2.286.0"
 
 # update the base packages
-# RUN apt-get update -y && apt-get upgrade -y 
+# RUN apt-get update -y && apt-get upgrade -y
 RUN apt-get update -y
 # add a non-sudo user
 # RUN useradd -m docker
