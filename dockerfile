@@ -23,7 +23,8 @@ RUN apt-get install -y --no-install-suggests --no-install-recommends \
     ca-certificates \
     jq \
     gnupg \
-    lsb-release
+    lsb-release \
+    softhsm
 
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
