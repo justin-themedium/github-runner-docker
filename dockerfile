@@ -4,6 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # set the github runner version
 ARG RUNNER_VERSION="2.286.0"
+ARG HOST_DOCKER_GID="134"
 
 # update the base packages
 # RUN apt-get update -y && apt-get upgrade -y
@@ -40,6 +41,7 @@ RUN chmod +x /usr/local/bin/docker-compose
 # since the config and run script for actions are not allowed to be run by root,
 # set the user to "docker" so all subsequent commands are run as the docker user
 RUN usermod -aG docker medium
+RUN groupmod -g ${HOST_DOCKER_GID} docker
 USER medium
 
 # cd into the user directory, download and unzip the github actions runner
